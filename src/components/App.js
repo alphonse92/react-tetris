@@ -5,10 +5,7 @@ function App() {
 
   return (
     <div className="App">
-      Welcome you
-      <TimerComponent>
-
-      </TimerComponent>
+      <TimerComponent showControls />
     </div>
   );
 }

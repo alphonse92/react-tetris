@@ -25,7 +25,6 @@ class Timer {
 
     return (data) => {
       const eventData = { data, event }
-      console.log(eventData)
       callbackEvent(eventData)
     }
   }
@@ -33,8 +32,7 @@ class Timer {
   canTick = () => !this.isStoped() && !this.isPaused()
 
   setInterval = (newInterval) => {
-    console.log(newInterval)
-    this.interval = newInterval;
+    this.interval = newInterval <= 0 ? 1 : newInterval;
     this.getEvent(Timer.Events.NEW_INTERVAL)(this.interval)
   }
 

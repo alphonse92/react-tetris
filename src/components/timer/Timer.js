@@ -32,9 +32,14 @@ class TimerComponent extends React.Component {
 
   setEvent = dispatcher => ({ data }) => dispatcher(data)
 
-  adelantar = () => {
-    this.timer.setInterval(100)
+  aumentarVelocidad = () => {
+    this.timer.setInterval(this.props.timer.interval - 100)
   }
+
+  disminuirVelocidad = () => {
+    this.timer.setInterval(this.props.timer.interval + 100)
+  }
+
   reanude = () => {
     this.timer.reanude()
   }
@@ -46,15 +51,27 @@ class TimerComponent extends React.Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        current time: {this.props.timer.tick}
-        <button onClick={this.adelantar} > adelantar</button>
-        <button onClick={this.reanude} > reanude</button>
-        <button onClick={this.pause} > pause</button>
-        <button onClick={this.stop} > stop</button>
-      </div>
-    );
+    const style = {
+      backgroundColor: 'yellow',
+      position: 'absolute',
+      top: 0,
+      left: 0
+    }
+
+    if (this.props.showControls)
+      return (
+        <div style={style} >
+          t: <small>{this.props.timer.tick}</small>
+          || i: <small>{this.props.timer.interval}</small>
+          <button onClick={this.disminuirVelocidad} > {"<<"}  </button>
+          <button onClick={this.aumentarVelocidad} > >> </button>
+          <button onClick={this.reanude} > > </button>
+          <button onClick={this.pause} >||</button>
+          <button onClick={this.stop} > X</button>
+        </div >
+      )
+
+    return null;
   }
 
 }

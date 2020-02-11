@@ -3,11 +3,7 @@ import TimerComponent from './timer/Timer';
 
 function App() {
 
-  return (
-    <div className="App">
-      <TimerComponent showControls />
-    </div>
-  );
+  return <TimerComponent showControls />
 }
 
 export default App;

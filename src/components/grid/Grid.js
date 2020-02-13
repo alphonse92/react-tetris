@@ -1,13 +1,22 @@
 
 import React from 'react';
+import './Grid.sass'
+import { GridRow } from './GridRow';
+
 
 const Grid = (props) => {
+  const { cols = 10, rows = 30, size = 5, printCoordinates } = props
+  const matrix = Array.from(Array(rows)).map((val, y) => <GridRow size={size}{...{ cols, rows, size, printCoordinates }} />)
+  const component = (
+    <div className="grid-game">
+      {matrix}
+    </div>
+  );
 
-  const { col, rows } = props
-
-  return <div></div>;
+  return component
 
 }
 
 
-export { }
+
+export { Grid }

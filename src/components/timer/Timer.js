@@ -58,18 +58,21 @@ class TimerComponent extends React.Component {
 
     if (this.props.showControls)
       return (
-        <div style={style} >
-          t: <small>{this.props.timer.tick}</small>
-          || i: <small>{this.props.timer.interval}</small>
-          <button onClick={this.disminuirVelocidad} > {"<<"}  </button>
-          <button onClick={this.aumentarVelocidad} > >> </button>
-          <button onClick={this.reanude} > > </button>
-          <button onClick={this.pause} >||</button>
-          <button onClick={this.stop} > X</button>
-        </div >
+        <React.Fragment>
+          <div style={style} >
+            t: <small>{this.props.timer.tick}</small>
+            || i: <small>{this.props.timer.interval}</small>
+            <button onClick={this.disminuirVelocidad} > {"<<"}  </button>
+            <button onClick={this.aumentarVelocidad} > >> </button>
+            <button onClick={this.reanude} > > </button>
+            <button onClick={this.pause} >||</button>
+            <button onClick={this.stop} > X</button>
+          </div >
+          {this.props.children}
+        </React.Fragment>
       )
 
-    return null;
+    return this.props.children;
   }
 
 }
